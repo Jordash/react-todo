@@ -1,6 +1,7 @@
 var React = require('react');
 
 var TodoList = require('TodoList');
+var AddTodo = require('AddTodo');
 
 var TodoApp = React.createClass({
   getInitialState: function () {
@@ -13,6 +14,10 @@ var TodoApp = React.createClass({
       ]
     }
   },
+  //Listen for new todo items being created, then add them
+  handleAddTodo: function(text) {
+    alert('new todo: ' + text);
+  },
   render: function() {
     var {todos} = this.state;
 
@@ -20,6 +25,9 @@ var TodoApp = React.createClass({
       <div>
       {/* send todos array to TodoList component */}
       <TodoList todos={todos}/>
+      {/* render AddTodo component here */}
+      {/* on submit, pass in handleAddTodo function */}
+      <AddTodo onAddTodo={this.handleAddTodo}/>
       </div>
     )
   }
